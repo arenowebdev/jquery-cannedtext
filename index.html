@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>jQuery Form Letter Input</title>
+        <meta name="description" content="Allows you to add custom tags to a text area to quickly enter form letter data.">
+        <meta name="viewport" content="width=device-width">
+
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700|Inconsolata' rel='stylesheet' type='text/css'>
+        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/main.css" rel="stylesheet">
+
+        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
+                    <a class="brand" href="#">Form Letter Input</a>
+                    <ul class="nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#">Source</a></li>
+                        <li><a href="http://dmwc.biz">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <br>
+
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="hero-unit">
+                        <h1>Lightning fast form letter text entry</h1>
+                        <p>Ever have to respond to customers via email using a plain old textarea? This plugin was created to allow you to turn your boring textarea into a typists dream by allowing you to set tab stops on custom tags! Check it out in action below.</p>
+                        <p><a href="#" class="btn btn-primary btn-large"><i class="icon-github"></i> Download @ Github &raquo;</a></p>
+                    </div>
+                    <div class="row-fluid">
+                        <div class="span6">
+                            <h2>Show Me The Demo</h2>
+                            <span class="help-block">
+                                <small>
+                                    <span class="label label-info"><i class="icon-help"></i> HINT</span> Try typing "::testing " or "::thanks " (without quotes but with the space) to see the script in action. Once the text fills, the first tag will be highlighted for you. You can then tab to each of the next tabs as necessary.
+                                </small>
+                            </span>
+                            <textarea id="demo" class="input-block-level" rows="9"></textarea>
+                        </div><!--/span-->
+                        <div class="span6">
+                            <h2>Example Source</h2>
+                            <pre style="font-size: .9em; font-family: 'Inconsolata';" class="prettyprint linenums language-js">$(document).ready({
+    $("#demo").formletter({
+        phrases: [
+            {key: '::testing', txt: 'Thanks for trying out my first jQuery plugin! As you can tell, I\'m quite the {{LEVEL}} when it comes to making plugins. {{ Another Tag }} just to show it off a bit more.'},
+            {key: '::thanks', txt: "{{your name}},\n\nThank you for taking the time to checkout my first plugin.\n\n{{GreeTing}},\n\nDavid Mosher"}
+        ]
+    });
+});</pre>
+                        </div><!--/span-->
+                    </div><!--/row-->
+                </div><!--/span-->
+            </div><!--/row-->
+
+            <hr>
+
+            <footer>
+                <p class="muted" style="font-size: .8em;">&copy; <a href="http://dmwc.biz">David Mosher</a> 2013. All Rights Reserved.</p>
+            </footer>
+
+        </div><!--/.fluid-container-->
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+
+        <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+        <script src="js/vendor/prettify.js"></script>
+        <script src="js/main.js"></script>
+
+        <script src="js/formletter.js"></script>
+        <script>
+            $(document).ready(function() {
+                prettyPrint();
+                $("#demo").formletter({
+                    phrases: [
+                        {key: '::testing', txt: 'Thanks for trying out my first jQuery plugin! As you can tell, I\'m quite the {{LEVEL}} when it comes to making plugins. {{ Another Tag }} just to show it off a bit more.'},
+                        {key: '::thanks', txt: "{{your name}},\n\nThank you for taking the time to checkout my first plugin.\n\n{{GreeTing}},\n\nDavid Mosher {{asdf-1245}}"}
+                    ]
+                });
+            });
+        </script>
+    </body>
+</html>
