@@ -25,6 +25,65 @@
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
+                    <a class="brand" href="#">Form Letter Textarea</a>
+                    <ul class="nav">
+                        <li class="active"><a href="http://underparnv.github.io/jquery-formletter">Home</a></li>
+                        <li><a href="http://github.com/underparnv/jquery-formletter">Source</a></li>
+                        <li><a href="http://dmwc.biz">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="hero-unit">
+                    <h1>jQuery Form Letter Textarea <small>Efficient text entry in form letter textareas with text completion and customizable tab stops</small></h1>
+                    <hr/>
+                    <textarea class="input-block-level" placeholder="Enter text ..." rows="10" id="demo"></textarea>
+                    <a href="#" class="btn pull-right">Example Submit Button (does nothing&hellip;just showing tabbing out of field)</a>
+                    <br class="clear">
+                    <div class="help-block">
+                        <small>
+                            <span class="label label-info"><i class="icon-help"></i> HINT</span> Try typing "::testing " or "::thanks " (without quotes but with the space) to see the script in action. Once the text fills, the first tag will be highlighted for you. You can then tab to each of the next tags as necessary.
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="span6">
+                    <h2>About</h2>
+                    <p>
+                        Ever have to respond to customers via email using a plain old textarea? This plugin was created to allow you to turn your boring textarea into a typists dream by allowing you to setup custom text completiion as well as set customized tab stops at custom tags!
+                    </p>
+
+                    <p style="text-align:center; margin-top:20px">
+                        <a class="btn btn-large btn-primary" href="https://github.com/jhollingworth/bootstrap-wysihtml5/"><i class="icon-github-sign"></i> View Project on Github</a>
+                    </p>
+                </div>
+                <div class="span6" >
+                    <h2>Usage</h2>
+
+
+                    <p>
+                        <pre class="prettyprint linenums language-js" style="font-family: 'Inconsolata'">$(document).ready({
+    $("#demo").formletter({
+        phrases: [
+            {key: '::testing', txt: 'Thanks for trying out my first jQuery plugin! As you can tell, I\'m quite the {{LEVEL}} when it comes to making plugins. {{ Another Tag }} just to show it off a bit more.'},
+            {key: '::thanks', txt: "{{your name}},\n\nThank you for taking the time to checkout my first plugin.\n\n{{GreeTing}},\n\nDavid Mosher"}
+        ]
+    });
+});</pre>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!--
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container-fluid">
                     <a class="brand" href="#">Form Letter Input</a>
                     <ul class="nav">
                         <li class="active"><a href="http://underparnv.github.io/jquery-formletter">Home</a></li>
@@ -53,7 +112,7 @@
                                 </small>
                             </span>
                             <textarea id="demo" class="input-block-level" rows="9"></textarea>
-                        </div><!--/span-->
+                        </div>
                         <div class="span6">
                             <h2>Example Source</h2>
                             <pre style="font-size: .9em; font-family: 'Inconsolata';" class="prettyprint linenums language-js">$(document).ready({
@@ -64,10 +123,10 @@
         ]
     });
 });</pre>
-                        </div><!--/span-->
-                    </div><!--/row-->
-                </div><!--/span-->
-            </div><!--/row-->
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <hr>
 

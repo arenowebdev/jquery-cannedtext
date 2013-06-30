@@ -3,12 +3,13 @@ body {
     padding-top: 60px;
     padding-bottom: 40px;
 }
-.sidebar-nav {
-    padding: 9px 0;
-}
 .hero-unit {
-  color: #FFF;
-  background: url(../img/bg.jpg);
+  padding: 50px;
+}
+.hero-unit h1 small {
+    display: block;
+    padding-top: 10px;
+    padding-left: 45px;
 }
 
 @media (max-width: 980px) {
