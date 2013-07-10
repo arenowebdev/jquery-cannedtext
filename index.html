@@ -40,6 +40,15 @@
                 <div class="hero-unit">
                     <h1>jQuery Canned Text Input <small>Efficient text entry in form letter textareas with text completion and customizable tab stops</small></h1>
                     <hr/>
+                    <div class="btn-toolbar">
+                        <div class="btn-group">
+                            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Quick Text <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" class="quicktext" rel="::testing">Testing</a></li>
+                                <li><a href="#" class="quicktext" rel="::thanks">Thanks</a></li>
+                            </ul>
+                        </div>
+                    </div>
                     <textarea class="input-block-level" placeholder="Enter text ..." rows="10" id="demo"></textarea>
                     
                     <br class="clear">
@@ -67,6 +76,13 @@
         {key: '::thanks', txt: "{{your name}},\n\nThank you for taking the time to checkout my first plugin.\n\n{{GreeTing}},\n\nDavid Mosher"}
         ]
     });
+    $('.quicktext').click(function(e) {
+        e.preventDefault();
+        $('#demo').val($('#demo').val() + ' ' + $(this).attr('rel'));
+        setTimeout(function() {
+            $('#demo').focus().trigger('keydown');
+        }, 10);
+    });
 });</pre>
                     </p>
                 </div>
@@ -84,11 +100,20 @@
         <script>
         $(document).ready(function() {
             prettyPrint();
+            
             $("#demo").cannedtext({
                 phrases: [
                 {key: '::testing', txt: 'Thanks for trying out my first jQuery plugin! As you can tell, I\'m quite the {{LEVEL}} when it comes to making plugins. {{ Another Tag }} just to show it off a bit more.'},
                 {key: '::thanks', txt: "{{your name}},\n\nThank you for taking the time to checkout my first plugin.\n\n{{GreeTing}},\n\nDavid Mosher {{asdf-1245}}"}
                 ]
+            });
+
+            $('.quicktext').click(function(e) {
+                e.preventDefault();
+                $('#demo').val($('#demo').val() + ' ' + $(this).attr('rel'));
+                setTimeout(function() {
+                    $('#demo').focus().trigger('keydown');
+                }, 10);
             });
         });
         </script>

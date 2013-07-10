@@ -33,7 +33,7 @@
         init: function() {
             options = this.options;
             el = this.el;
-            $('body').on('keyup', $(el), function(e) {
+            $('body').on('keyup keydown', $(el), function(e) {
             	val = $(el).val();
                 if (e.which == 9 || e.keyCode == 9) {
                    index = val.match(/{{[-\S\sD]*?}}/);
@@ -62,21 +62,7 @@
                      }
                  });
                }
-           }).on('keydown', $(el), function(e) {
-            if (e.which == 9 || e.keyCode == 9) {
-                val = $(el).val();
-                index = val.match(/{{[-\S\sD]*?}}/);
-                if (index) {
-                    e.preventDefault();
-                }
-                var e = $.Event("keyup");
-                e.keyCode = 9;
-                e.which = 9;
-                setTimeout(function() {
-                    $(el).trigger(e);
-                }, 1);
-            }
-        });
+           });
        },
    };
 
