@@ -14,17 +14,18 @@
  ;(function ( $ ) {
 
     var pluginName = "cannedtext",
-    defaults = {};
+
+    defaults = {
+        'tabstop_start': '{{',
+        'tabstop_end': '}}'
+    };
 
     // The actual plugin constructor
     function Cannedtext( el, options ) {
         this.el = el;
-
         this.options = $.extend( {}, defaults, options );
-
         this._defaults = defaults;
         this._name = pluginName;
-
         this.init();
     }
 
@@ -34,12 +35,16 @@
             options = this.options;
             el = this.el;
             $('body').on('keyup keydown', $(el), function(e) {
-            	val = $(el).val();
+                val = $(el).val();
                 if (e.which == 9 || e.keyCode == 9) {
-                   index = val.match(/{{[-\S\sD]*?}}/);
-                   if (index) {
-                      e.preventDefault();
-                      $(el).selectRange(index.index, index.index + index[0].length);
+                    start = options.tabstop_start.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+                    end = options.tabstop_end.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+                    match = start + "[-\\S\\sD]*?" + end;
+                    regex = new RegExp(match);
+                    index = val.match(regex);
+                    if (index) {
+                        e.preventDefault();
+                        $(el).selectRange(index.index, index.index + index[0].length);
                         // scroll textarea to location of highlighted text (if applicable)
                         var sh = $(el).prop('scrollHeight');
                         var line_ht = $(el).css('line-height').replace('px', '');
@@ -49,29 +54,29 @@
                         $(el).scrollTop(height * line_ht);
                     }
                 } else {
-                   $.each(options.phrases, function(i, v) {
-                      if (val.indexOf(v.key) != -1) {
-                         val = val.replace(v.key, v.txt);
-                         $(el).val(val);
-                         var e = $.Event("keyup");
-                         e.keyCode = 9;
-                         e.which = 9;
-                         setTimeout(function() {
-                            $(el).trigger(e);
-                        }, 1);
-                     }
-                 });
-               }
-           });
-       },
-   };
+                    $.each(options.phrases, function(i, v) {
+                        if (val.indexOf(v.key) != -1) {
+                            val = val.replace(v.key, v.txt);
+                            $(el).val(val);
+                            var e = $.Event("keyup");
+                            e.keyCode = 9;
+                            e.which = 9;
+                            setTimeout(function() {
+                                $(el).trigger(e);
+                            }, 1);
+                        }
+                    });
+                }
+            });
+        },
+    };
 
-   $.fn[pluginName] = function ( options ) {
-    return this.each(function () {
-        if (!$.data(this, "plugin_" + pluginName)) {
-            $.data(this, "plugin_" + pluginName, new Cannedtext( this, options ));
-        }
-    });
-};
+    $.fn[pluginName] = function ( options ) {
+        return this.each(function () {
+            if (!$.data(this, "plugin_" + pluginName)) {
+                $.data(this, "plugin_" + pluginName, new Cannedtext( this, options ));
+            }
+        });
+    };
 
-})( jQuery );
+    })( jQuery );
