@@ -3,146 +3,165 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>jQuery Canned Text Input</title>
-        <meta name="description" content="Allows you to add custom tags to a text area to quickly enter form letter data.">
-        <meta name="viewport" content="width=device-width">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>CannedText</title>
+    <meta name="description" content="Allows you to add custom tags to a text area to quickly enter form letter data.">
+    <meta name="viewport" content="width=device-width">
 
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700|Inconsolata' rel='stylesheet' type='text/css'>
-        <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-        <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/main.css" rel="stylesheet">
+    <link rel="shortcut icon" href="//jquery.com/jquery-wp-content/themes/jquery.com/i/favicon.ico">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700|Inconsolata' rel='stylesheet' type='text/css'>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
 
-        <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-        <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-        <![endif]-->
-
-        <div class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container-fluid">
-                    <a class="brand" href="#">Canned Text Input</a>
-                    <ul class="nav">
-                        <li class="active"><a href="http://underparnv.github.io/jquery-cannedtext">Home</a></li>
-                        <li><a href="http://github.com/underparnv/jquery-cannedtext">Source</a></li>
-                        <li><a href="http://dmwc.biz">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
+    <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="brand" href="#">CannedText</a>
+          <ul class="nav">
+            <li class="active"><a href="http://underparnv.github.io/jquery-cannedtext">Home</a></li>
+            <li><a href="http://github.com/underparnv/jquery-cannedtext">Source</a></li>
+            <li><a href="http://dmwc.biz">Contact</a></li>
+          </ul>
         </div>
+      </div>
+    </div>
 
-        <div class="container">
-            <div class="row">
-                <div class="hero-unit">
-                    <h1>jQuery Canned Text Input <small>Efficient text entry in form letter textareas with text completion and customizable tab stops</small></h1>
-                    <hr/>
-                    <div class="btn-toolbar">
-                        <div class="btn-group">
-                            <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">Canned Text <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#" class="cannedtext" rel="::testing">Testing</a></li>
-                                <li><a href="#" class="cannedtext" rel="::thanks">Thanks</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <textarea class="input-block-level" placeholder="Enter text ..." rows="10" id="demo"></textarea>
-                    
-                    <br class="clear">
-                    <p class="help-block">
-                        To test out the plugin, simply start typing above. You can trigger the quick text with either "::testing" or "::thanks", or clicking the quick text button above.
-                    </p>
-                    <p>
-                        You will notice that once a canned text entry has been made, it automatically expands to the full text of the canned text and highlights the first tab stop for you to start typing into immediately <span class="muted">(side note: the textarea also scrolls to the tab stop&hellip;if necessary)</span>. From there you can make your entry and press the tab key to either be a) taken to the next tab stop; or b) taken on to the next input on the page.
-                    </p>
-                    <p>
-                        This is my first jQuery plugin, and I would love to hear your feedback. Please <a href="http://dmwc.biz/blog">stop by my blog</a> and let me know what you think!
-                    </p>
-                </div>
+    <div class="container">
+      <div class="row">
+        <div class="hero-unit">
+          <h1>CannedText <small>Efficient text entry in form letter textareas with text completion and customizable tab stops</small></h1>
+          <hr/>
+          <div class="btn-toolbar">
+            <div class="btn-group">
+              <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">CannedText Quick Text <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#" class="cannedtext" rel=";;testing">Testing</a></li>
+                <li><a href="#" class="cannedtext" rel=";;thanks">Thanks</a></li>
+              </ul>
             </div>
+          </div>
+          <textarea class="input-block-level" placeholder="Enter text ..." rows="10" id="demo"></textarea>
 
-            <div class="row">
-                <div class="span12">
-                    <a class="btn btn-large btn-inverse pull-right" href="http://github.com/underparnv/jquery-cannedtext"><i class="icon-github-sign"></i> View Project on Github</a>
-                    <ul class="nav nav-pills">
-                        <li class="active"><a href="#basic" data-toggle="tab">Basic Example</a></li>
-                        <li><a href="#customized" data-toggle="tab">Customized Example</a></li>
-                        <li><a href="#options" data-toggle="tab">Options</a></li>
-                    </ul>
-                    <div class="tab-content">
-                        <div class="tab-pane active" id="basic">
-                            <p class="help-block">Example that is running above:</p>
-                            <pre class="prettyprint linenums language-js" style="font-family: 'Inconsolata'">$(document).ready({
-    $('#demo').cannedtext({
-        phrases: [
-        {key: '::testing', txt: "Thanks for trying out my first jQuery plugin! As you can tell, I'm quite the {{LEVEL}} when it comes to making plugins. {{ Another Tag }} just to show it off a bit more."},
-        {key: '::thanks', txt: "{{your name}},\n\nThank you for taking the time to checkout my first plugin.\n\n{{GreeTing}},\n\nDavid Mosher"}
-        ]
-    });
-    $('.cannedtext').click(function(e) {
-        e.preventDefault();
-        $('#demo').val($('#demo').val() + ' ' + $(this).attr('rel'));
-        setTimeout(function() {
-            $('#demo').focus().trigger('keydown');
-        }, 10);
-    });
+          <br class="clear">
+          <p class="help-block">
+            To test out the plugin, simply start typing above. You can trigger the quick text with either ";;testing" or ";;thanks", or clicking the quick text button above.
+          </p>
+          <p>
+            You will notice that once a canned text entry has been made, it automatically expands to the full text of the canned text and highlights the first tab stop for you to start typing into immediately <span class="muted">(side note: the textarea also scrolls to the tab stop&hellip;if necessary)</span>. From there you can make your entry and press the tab key to either be a) taken to the next tab stop; or b) taken on to the next input on the page.
+          </p>
+          <p>
+            This is my first jQuery plugin, and I would love to hear your feedback. Please <a href="http://twitter.com/arenowebdev">send me a tweet</a> and let me know what you think!
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="span12">
+          <a class="btn btn-large btn-inverse pull-right" href="http://github.com/underparnv/jquery-cannedtext"><i class="icon-github-sign"></i> View Project on Github</a>
+          <ul class="nav nav-pills">
+            <li class="active"><a href="#basic" data-toggle="tab">Basic Example</a></li>
+            <li><a href="#customized" data-toggle="tab">Customized Example</a></li>
+            <li><a href="#options" data-toggle="tab">Options</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="basic">
+              <p class="help-block">Example that is running above:</p>
+              <pre class="prettyprint linenums language-js" style="font-family: 'Inconsolata'">$(document).ready({
+  $('#demo').cannedtext({
+    phrases: function () {
+      var phrases = [];
+      $.ajax({
+        url: 'phrases.json',
+        dataType: 'json',
+        async: false,
+        success: function (json) {
+          phrases = json;
+        }
+      });
+
+      return phrases;
+    }
+  });
+  $('.cannedtext').click(function(e) {
+    e.preventDefault();
+    $('#demo').val($('#demo').val() + ' ' + $(this).attr('rel'));
+    setTimeout(function() {
+      $('#demo').focus().trigger('keydown');
+    }, 10);
+  });
 });</pre>
-                        </div>
-                        <div class="tab-pane" id="customized">
-                            <p class="help-block">Example with custom tab stop start and end tags:</p>
-                            <pre class="prettyprint linenums language-js" style="font-family: 'Inconsolata'">$(document).ready({
+          </div>
+          <div class="tab-pane" id="customized">
+            <p class="help-block">Example with custom tab stop start and end tags:</p>
+            <pre class="prettyprint linenums language-js" style="font-family: 'Inconsolata'">$(document).ready({
     $('#demo').cannedtext({
-        tabstop_start: '[[',
-        tabstop_end: ']]',
-        phrases: [
-        {key: '::testing', txt: "Thanks for trying out my first jQuery plugin! As you can tell, I'm quite the [[LEVEL]] when it comes to making plugins. [[ Another Tag ]] just to show it off a bit more."},
-            {key: '::thanks', txt: "[[your name]],\n\nThank you for taking the time to checkout my first plugin.\n\n[[GreeTing]],\n\nDavid Mosher"}
-        ]
+      tabstop_start: '[[',
+      tabstop_end: ']]',
+      phrases: [
+        {key: ';;testing', txt: "Just one [[ example ]] in this one"}
+      ]
     });
-});</pre>
-                        </div>
-                        <div class="tab-pane" id="options">
-                            <p class="help-block">While currently skimpy, I'm looking to expand these options quite a bit!</p>
-                            <pre class="prettyprint linenums language-js" style="font-family: 'Inconsolata'">$.fn.cannedtext.defaults = {
+  });</pre>
+          </div>
+          <div class="tab-pane" id="options">
+            <p class="help-block">While currently skimpy, I'm looking for ideas to expand these, so please send them in!</p>
+            <pre class="prettyprint linenums language-js" style="font-family: 'Inconsolata'">$.fn.cannedtext.defaults = {
     tabstop_start: '{{',
-    tabstop_end: '}}'
-};</pre>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    tabstop_end: '}}',
+    phrases: [callback or array]
+  };</pre>
+          </div>
         </div>
+      </div>
+    </div>
+  </div>
 
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
 
-        <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-        <script src="js/vendor/prettify.js"></script>
-        <script src="js/main.js"></script>
+  <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+  <script src="js/vendor/prettify.js"></script>
 
-        <script src="js/cannedtext.js"></script>
-        <script>
-        $(document).ready(function() {
-            prettyPrint();
-            
-            $("#demo").cannedtext({
-                phrases: [
-                {key: '::testing', txt: 'Thanks for trying out my first jQuery plugin! As you can tell, I\'m quite the {{LEVEL}} when it comes to making plugins. {{ Another Tag }} just to show it off a bit more.'},
-                {key: '::thanks', txt: "{{your name}},\n\nThank you for taking the time to checkout my first plugin.\n\n{{GreeTing}},\n\nDavid Mosher {{asdf-1245}}"}
-                ]
-            });
+  <script src="js/cannedtext.js"></script>
 
-            $('.cannedtext').click(function(e) {
-                e.preventDefault();
-                $('#demo').val($('#demo').val() + $(this).attr('rel'));
-                setTimeout(function() {
-                    $('#demo').focus().trigger('keydown');
-                }, 10);
-            });
+  <script>
+  $(document).ready(function() {
+    prettyPrint();
+
+    $("#demo").cannedtext({
+      phrases: function () {
+        var phrases = [];
+        $.ajax({
+          url: 'phrases.json',
+          dataType: 'json',
+          async: false,
+          success: function (json) {
+            phrases = json;
+          }
         });
-        </script>
-    </body>
+
+        return phrases;
+      }
+    });
+
+    $('.cannedtext').click(function(e) {
+      e.preventDefault();
+      $('#demo').val($('#demo').val() + $(this).attr('rel'));
+      setTimeout(function() {
+        $('#demo').focus().trigger('keydown');
+      }, 10);
+    });
+  });
+  </script>
+
+  </body>
 </html>
