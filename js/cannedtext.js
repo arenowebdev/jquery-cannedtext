@@ -1,14 +1,14 @@
 /*
- * jQuery Plugin - Canned Text Input
+ * jQuery Plugin - Canned Text
  * Allows you to add custom tags to an input so you can quickly enter data.
- * Version 0.0.1, June 28th, 2013
- *      by David Mosher
- * 
- * Copyright (c) 2013 David Mosher (http://dmwc.biz)
- * Canned Text is open-source software licensed under the
- * Create Commons Attribution Non Commercial Share Alike 3.0 license
- * http://spdx.org/licenses/CC-BY-NC-SA-3.0
  *
+ * Version 0.0.2, July 25th, 2014
+ *      by David Mosher
+ *
+ * Copyright (c) 2013-2014 David Mosher. All Rights Reserved.
+ * Canned Text is open-source software licensed under the Create
+ * Commons Attribution Non Commercial Share Alike 3.0 license
+ * http://spdx.org/licenses/CC-BY-NC-SA-3.0
  */
 
  ;(function ( $ ) {
@@ -16,8 +16,9 @@
     var pluginName = "cannedtext",
 
     defaults = {
-        'tabstop_start': '{{',
-        'tabstop_end': '}}'
+        tabstop_start: '{{',
+        tabstop_end: '}}',
+        phrases: []
     };
 
     // The actual plugin constructor
@@ -34,31 +35,39 @@
         init: function() {
             options = this.options;
             el = this.el;
-            $('body').on('keyup keydown', $(el), function(e) {
+
+            if (typeof options.phrases === 'function') {
+                options.phrases = options.phrases(this);
+            }
+
+            $('body').on('keydown keyup', $(el), function(e) {
                 val = $(el).val();
+                // on tab
                 if (e.which == 9 || e.keyCode == 9) {
-                    start = options.tabstop_start.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
-                    end = options.tabstop_end.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&");
+                    pattern = '/[-[\]{}()*+?.,\\^$|#\s]/g';
+                    start = options.tabstop_start.replace(pattern, "\\$&");
+                    end = options.tabstop_end.replace(pattern, "\\$&");
                     match = start + "[-\\S\\sD]*?" + end;
                     regex = new RegExp(match);
-                    index = val.match(regex);
-                    if (index) {
+                    match = val.match(regex);
+                    if (match) {
                         e.preventDefault();
-                        $(el).selectRange(index.index, index.index + index[0].length);
+                        $(el).selectRange(match.index, match.index + match[0].length);
                         // scroll textarea to location of highlighted text (if applicable)
                         var sh = $(el).prop('scrollHeight');
                         var line_ht = $(el).css('line-height').replace('px', '');
                         var n_lines = sh / line_ht;
                         var char_in_line = $(el).val().length / n_lines;
-                        var height = Math.floor(index.index / char_in_line);
+                        var height = Math.floor(match.index / char_in_line);
                         $(el).scrollTop(height * line_ht);
                     }
+                // any other keypress
                 } else {
                     $.each(options.phrases, function(i, v) {
                         if (val.indexOf(v.key) != -1) {
                             val = val.replace(v.key, v.txt);
                             $(el).val(val);
-                            var e = $.Event("keyup");
+                            var e = $.Event("keydown");
                             e.keyCode = 9;
                             e.which = 9;
                             setTimeout(function() {
@@ -79,4 +88,13 @@
         });
     };
 
-    })( jQuery );
+    // selectRange allows text to be selected by start and end positions
+    $.fn.selectRange = function(start, end) {
+        var e = document.getElementById($(this).attr('id'));
+        if (!e) return;
+        else if (e.setSelectionRange) { e.focus(); e.setSelectionRange(start, end); } /* WebKit */
+        else if (e.createTextRange) { var range = e.createTextRange(); range.collapse(true); range.moveEnd('character', end); range.moveStart('character', start); range.select(); } /* IE */
+        else if (e.selectionStart) { e.selectionStart = start; e.selectionEnd = end; }
+    };
+
+})( jQuery );
