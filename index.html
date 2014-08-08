@@ -141,13 +141,15 @@
       phrases: function () {
         var phrases = [];
         $.ajax({
-          url: 'js/phrases',
+          url: 'phrases.json',
           dataType: 'json',
           async: false,
           success: function (json) {
-            phrases = json;
+              phrases = json;
+              console.log(json);
           }
-        });
+      });
+      console.log('done');
 
         return phrases;
       }
