@@ -9,7 +9,7 @@ Documentation, Features and Demos
 ---------------------------------
 Full details and documentation can be found on the project page here:
 
-<http://github.com/underparnv/jquery-cannedtext>
+<http://github.com/arenowebdev/jquery-cannedtext>
 
 License
 -------
